@@ -2,11 +2,11 @@
     <h1>Lista zadań</h1>
 
     <ul class="list-group">
-        <li class="list-group-item li-items" *ngFor="let task of tasks; let i = index">
+        <li [ngClass]="{'complete-Task': task.taskComplete}" class="list-group-item li-items" *ngFor="let task of tasks; let i = index">
             {{task.taskName}}
             <div class="btns__action">
-                <button class="btn btn-success">Ok</button>
-                <button (click)="openEditForm(task,i)" class="btn btn-primary btns__action-edit">Edytuj</button>
+                <button (click)="doneTask(i)" class="btn btn-success">Ok</button>
+                <button [disabled]="task.taskComplete" (click)="openEditForm(task,i)" class="btn btn-primary btns__action-edit">Edytuj</button>
                 <button (click)="removeTask(i)" class="btn btn-danger">Usun</button>
             </div>
         </li>

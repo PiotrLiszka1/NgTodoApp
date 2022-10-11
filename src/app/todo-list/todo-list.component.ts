@@ -42,6 +42,17 @@ export class TodoListComponent implements OnInit {
   }
 
   removeTask(i: number) {
-    this.tasks.splice(i, 1);
+    const conf = confirm('Na pewno chcesz usunąć zadanie z listy ? ');
+    if (conf) {
+      this.tasks.splice(i, 1);
+    }
+  }
+
+  doneTask(i: number) {
+    this.tasks.forEach((done, id) => {
+      if (i === id) {
+        done.taskComplete = !done.taskComplete;
+      }
+    });
   }
 }
