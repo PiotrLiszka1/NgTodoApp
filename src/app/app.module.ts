@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TodoListComponent } from './todo-list/todo-list.component';
-import { RfFormsComponent } from './rf-forms/rf-forms.component';
+import { RfFormsComponent } from './todo-list/rf-forms/rf-forms.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({

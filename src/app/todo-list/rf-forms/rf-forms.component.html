@@ -1,4 +1,4 @@
-<form>
+<form [formGroup]="form" (submit)="saveTask()">
     <div class="modal-header">
         <h4 class="modal-title" id="modal-basic-title">Add task</h4>
     </div>
@@ -6,7 +6,7 @@
     <div class="modal-body">
 
         <div class="form-floating mb-3  ">
-            <input class="form-control" id="floatingInput" placeholder="Your task">
+            <input formControlName="taskName" class="form-control" id="floatingInput" placeholder="Your task">
             <label for="floatingInput">Task name</label>
 
             <div class="modal-footer">
