@@ -1,3 +1,20 @@
 .container {
   margin-top: 40px;
+
+  .li-items {
+    font-weight: bold;
+    line-height: 35px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .btns__action {
+    &-edit {
+      margin: 0 7px;
+    }
+  }
+
+  .btn-add {
+    margin-top: 40px;
+  }
 }
