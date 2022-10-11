@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { TaskMode } from '../core/enum/task-mode';
 import { Task } from '../core/model/task';
 import { TaskService } from '../core/service/task.service';
 import { RfFormsComponent } from './rf-forms/rf-forms.component';
@@ -11,6 +12,7 @@ import { RfFormsComponent } from './rf-forms/rf-forms.component';
 })
 export class TodoListComponent implements OnInit {
   tasks$ = this.taskService.getTask();
+
   constructor(
     private modalService: NgbModal,
     private taskService: TaskService
@@ -28,6 +30,7 @@ export class TodoListComponent implements OnInit {
 
   openEditForm(oneTask: Task, i: number): void {
     const modalRef = this.modalService.open(RfFormsComponent);
+    modalRef.componentInstance.mode = TaskMode.UPDATE;
     modalRef.componentInstance.tasks = oneTask;
     modalRef.componentInstance.taskEmit.subscribe((taskSave: Task) => {
       this.taskService.editTask(taskSave, i);

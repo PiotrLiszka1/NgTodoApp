@@ -1,5 +1,6 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { TaskMode } from 'src/app/core/enum/task-mode';
 import { Task } from '../../core/model/task';
 
 @Component({
@@ -8,6 +9,8 @@ import { Task } from '../../core/model/task';
   styleUrls: ['./rf-forms.component.scss'],
 })
 export class RfFormsComponent implements OnInit {
+  @Input() mode = TaskMode.CREATE;
+  taskMode = TaskMode;
   form!: FormGroup;
   tasks?: Task;
   @Output() taskEmit = new EventEmitter<Task>();
