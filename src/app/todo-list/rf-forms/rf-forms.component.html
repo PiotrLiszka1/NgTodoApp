@@ -6,18 +6,21 @@
                 <span *ngSwitchCase="taskMode.CREATE">Dodaj zadanie</span>
                 <span *ngSwitchCase="taskMode.UPDATE">Edytuj zadanie</span>
                 <span *ngSwitchDefault>Nie odnaleziono</span>
-
             </div>
         </h4>
     </div>
 
     <div class="modal-body">
         <div class="form-floating mb-3  ">
-            <input formControlName="taskName" class="form-control" id="floatingInput" placeholder="Your task">
+            <input formControlName="taskName" class="form-control" id="floatingInput" placeholder="Your task" [ngClass]="{'is-invalid': form.get('taskName')?.invalid && (form.get('taskName')?.touched || form.get('taskName')?.dirty ),
+           'is-valid': form.get('taskName')?.valid && (form.get('taskName')?.touched || form.get('taskName')?.dirty)}">
             <label for="floatingInput">Task name</label>
-
+            <div *ngIf="form.get('taskName')?.invalid" class="invalid-feedback">
+                <p *ngIf="form.get('taskName')?.hasError('required')">Pole jest mymagane</p>
+                <p *ngIf="form.get('taskName')?.hasError('minlength')">Pole musi posiadac minimum 3 znaki</p>
+            </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" type="submit">Dodaj</button>
+                <button [disabled]="form.invalid" class="btn btn-primary" type="submit">Dodaj</button>
             </div>
         </div>
     </div>

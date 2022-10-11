@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TaskMode } from 'src/app/core/enum/task-mode';
 import { Task } from '../../core/model/task';
 
@@ -10,16 +10,19 @@ import { Task } from '../../core/model/task';
 })
 export class RfFormsComponent implements OnInit {
   @Input() mode = TaskMode.CREATE;
+  @Output() taskEmit = new EventEmitter<Task>();
   taskMode = TaskMode;
   form!: FormGroup;
   tasks?: Task;
-  @Output() taskEmit = new EventEmitter<Task>();
 
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      taskName: this.tasks?.taskName || '',
+      taskName: [
+        this.tasks?.taskName || '',
+        [Validators.required, Validators.minLength(3)],
+      ],
     });
   }
 

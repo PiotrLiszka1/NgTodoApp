@@ -1,6 +1,6 @@
 <div class="container">
-    <h1>Lista zadań</h1>
 
+    <h1>Lista zadań</h1>
     <ul class="list-group">
         <li [ngClass]="{'complete-Task': task.taskComplete}" class="list-group-item li-items" *ngFor="let task of tasks$ |async; let i = index">
             {{task.taskName}}
@@ -11,6 +11,7 @@
             </div>
         </li>
     </ul>
-
+    <p *ngIf="(tasks$ | async)!.length === 0" class="error-info">Brak zadań na liscie</p>
     <button (click)="openAddForm()" class="btn btn-primary btn-add ">Dodaj zadanie</button>
+
 </div>
