@@ -30,4 +30,14 @@ export class TodoListComponent implements OnInit {
       modalRef.close();
     });
   }
+
+  openEditForm(oneTask: Task, i: number) {
+    const modalRef = this.modalService.open(RfFormsComponent);
+    modalRef.componentInstance.tasks = oneTask;
+    modalRef.componentInstance.taskEmit.subscribe((saveTask: Task) => {
+      this.tasks[i] = saveTask;
+
+      modalRef.close();
+    });
+  }
 }

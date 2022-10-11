@@ -9,14 +9,14 @@ import { Task } from '../../core/model/task';
 })
 export class RfFormsComponent implements OnInit {
   form!: FormGroup;
-
+  tasks?: Task;
   @Output() taskEmit = new EventEmitter<Task>();
 
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      taskName: '',
+      taskName: this.tasks?.taskName || '',
     });
   }
 
