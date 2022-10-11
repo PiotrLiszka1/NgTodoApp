@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Task } from '../core/model/task';
+import { RfFormsComponent } from '../rf-forms/rf-forms.component';
 
 @Component({
   selector: 'app-todo-list',
@@ -17,7 +19,11 @@ export class TodoListComponent implements OnInit {
       taskComplete: false,
     },
   ];
-  constructor() {}
+  constructor(private modalService: NgbModal) {}
 
   ngOnInit(): void {}
+
+  openAddForm() {
+    const modalRef = this.modalService.open(RfFormsComponent);
+  }
 }
