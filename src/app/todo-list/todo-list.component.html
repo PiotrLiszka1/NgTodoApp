@@ -2,7 +2,7 @@
     <h1>Lista zadań</h1>
 
     <ul class="list-group">
-        <li [ngClass]="{'complete-Task': task.taskComplete}" class="list-group-item li-items" *ngFor="let task of tasks; let i = index">
+        <li [ngClass]="{'complete-Task': task.taskComplete}" class="list-group-item li-items" *ngFor="let task of tasks$ |async; let i = index">
             {{task.taskName}}
             <div class="btns__action">
                 <button (click)="doneTask(i)" class="btn btn-success">Ok</button>

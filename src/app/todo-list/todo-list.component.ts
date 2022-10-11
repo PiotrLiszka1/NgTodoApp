@@ -10,17 +10,15 @@ import { RfFormsComponent } from './rf-forms/rf-forms.component';
   styleUrls: ['./todo-list.component.scss'],
 })
 export class TodoListComponent implements OnInit {
-  tasks: Task[] = [];
+  tasks$ = this.taskService.getTask();
   constructor(
     private modalService: NgbModal,
     private taskService: TaskService
   ) {}
 
-  ngOnInit(): void {
-    this.tasks = this.taskService.getTask();
-  }
+  ngOnInit(): void {}
 
-  openAddForm() {
+  openAddForm(): void {
     const modalRef = this.modalService.open(RfFormsComponent);
     modalRef.componentInstance.taskEmit.subscribe((saveTask: Task) => {
       this.taskService.addTask(saveTask);
@@ -28,7 +26,7 @@ export class TodoListComponent implements OnInit {
     });
   }
 
-  openEditForm(oneTask: Task, i: number) {
+  openEditForm(oneTask: Task, i: number): void {
     const modalRef = this.modalService.open(RfFormsComponent);
     modalRef.componentInstance.tasks = oneTask;
     modalRef.componentInstance.taskEmit.subscribe((taskSave: Task) => {
@@ -37,14 +35,14 @@ export class TodoListComponent implements OnInit {
     });
   }
 
-  removeTask(i: number) {
+  removeTask(i: number): void {
     const conf = confirm('Na pewno chcesz usunąć zadanie z listy ? ');
     if (conf) {
       this.taskService.removeTask(i);
     }
   }
 
-  doneTask(i: number) {
+  doneTask(i: number): void {
     this.taskService.doneTask(i);
   }
 }
