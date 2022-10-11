@@ -7,7 +7,7 @@
             <div class="btns__action">
                 <button class="btn btn-success">Ok</button>
                 <button (click)="openEditForm(task,i)" class="btn btn-primary btns__action-edit">Edytuj</button>
-                <button class="btn btn-danger">Usun</button>
+                <button (click)="removeTask(i)" class="btn btn-danger">Usun</button>
             </div>
         </li>
     </ul>
