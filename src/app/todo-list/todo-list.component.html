@@ -5,13 +5,21 @@
         <li [ngClass]="{'complete-Task': task.taskComplete}" class="list-group-item li-items" *ngFor="let task of tasks$ |async; let i = index">
             {{task.taskName}}
             <div class="btns__action">
-                <button (click)="doneTask(i)" class="btn btn-success">Ok</button>
-                <button [disabled]="task.taskComplete" (click)="openEditForm(task,i)" class="btn btn-primary btns__action-edit">Edytuj</button>
-                <button (click)="removeTask(i)" class="btn btn-danger">Usun</button>
+                <button (click)="doneTask(i)" class="btn btn-success">
+                    <i class="bi bi-check-lg"></i>
+                </button>
+                <button [disabled]="task.taskComplete" (click)="openEditForm(task,i)" class="btn btn-primary btns__action-edit">
+                    <i class="bi bi-pencil-square"></i>
+                    Edytuj
+                </button>
+                <button (click)="removeTask(i)" class="btn btn-danger">
+                    <i class="bi bi-trash3-fill"></i>
+                    Usun
+                </button>
             </div>
         </li>
     </ul>
     <p *ngIf="(tasks$ | async)!.length === 0" class="error-info">Brak zadań na liscie</p>
-    <button (click)="openAddForm()" class="btn btn-primary btn-add ">Dodaj zadanie</button>
+    <button (click)="openAddForm()" class="btn btn-primary btn-add "><i class="bi bi-plus"></i>Dodaj zadanie</button>
 
 </div>

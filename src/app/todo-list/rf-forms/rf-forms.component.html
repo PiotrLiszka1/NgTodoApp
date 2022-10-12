@@ -20,7 +20,7 @@
                 <p *ngIf="form.get('taskName')?.hasError('minlength')">Pole musi posiadac minimum 3 znaki</p>
             </div>
             <div class="modal-footer">
-                <button [disabled]="form.invalid" class="btn btn-primary" type="submit">Dodaj</button>
+                <button [disabled]="form.invalid" class="btn btn-primary" type="submit"><i class="bi bi-plus"></i>Dodaj</button>
             </div>
         </div>
     </div>
