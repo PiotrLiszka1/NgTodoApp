@@ -1,13 +1,6 @@
 .container {
   margin-top: 40px;
 
-  .li-items {
-    font-weight: bold;
-    line-height: 35px;
-    display: flex;
-    justify-content: space-between;
-  }
-
   .btns__action {
     &-edit {
       margin: 0 7px;
@@ -28,5 +21,21 @@
   .error-info {
     font-size: 30px;
     color: red;
+  }
+}
+
+@media (min-width: 320px) {
+  .li-items {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-weight: bold;
+    line-height: 35px;
+  }
+}
+
+@media (min-width: 768px) {
+  .li-items {
+    flex-direction: row;
   }
 }

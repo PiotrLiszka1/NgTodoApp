@@ -1,6 +1,7 @@
 <div class="container">
 
     <h1>Lista zadań</h1>
+    <hr>
     <ul class="list-group">
         <li [ngClass]="{'complete-Task': task.taskComplete}" class="list-group-item li-items" *ngFor="let task of tasks$ |async; let i = index">
             {{task.taskName}}
@@ -14,7 +15,7 @@
                 </button>
                 <button (click)="removeTask(i)" class="btn btn-danger">
                     <i class="bi bi-trash3-fill"></i>
-                    Usun
+                    Usuń
                 </button>
             </div>
         </li>
